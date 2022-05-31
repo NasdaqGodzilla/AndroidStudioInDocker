@@ -22,6 +22,11 @@ Android Studio running in Docker based on Ubuntu 18.04 with VNC, SSH, adb tools 
 
 [Docker as As DaaS: 在Docker中运行的AndroidStudio](https://nasdaqgodzilla.github.io/2022/05/31/Docker-as-As-DaaS-%E5%9C%A8Docker%E4%B8%AD%E8%BF%90%E8%A1%8C%E7%9A%84AndroidStudio/)
 
+# Demo
+![](https://github.com/NasdaqGodzilla/AndroidStudioInDocker/blob/main/DaasDemo1.jpg?raw=true)
+![](https://github.com/NasdaqGodzilla/AndroidStudioInDocker/blob/main/DaasDemo2.jpg?raw=true)
+![](https://github.com/NasdaqGodzilla/AndroidStudioInDocker/blob/main/DaasDemo3.jpg?raw=true)
+
 # LICENSE
 The MIT License (MIT)
 
