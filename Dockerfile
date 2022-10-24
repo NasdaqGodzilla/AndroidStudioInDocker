@@ -42,3 +42,20 @@ RUN rm -rf $HOME/.config/bg_sakuli.png
 ADD wallpaper_ballon.png $HOME/.config/bg_sakuli.png
 # RUN echo 'xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitorVNC-0/workspace0/last-image --set ~/.config/wallpaper_ballon.jpg' >> ~/.bashrc
 
+USER 0
+
+# Set Theme
+ENV THEME_FILE=os-catalina-xfce-4.16.tar.xz
+ENV THEME_FILE_EXTRACTED=Os-Catalina-XFCE-4.16
+ENV THEME_DIR=.themes
+# ENV THEME_SETTINGS=$HOME/.config/xfce4/xfconf/xfce-prechannel-xml/xsettings.xml
+ENV THEME_SETTINGS=/etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
+ENV THEME_OLD=Default
+ENV THEME_NEW=Os-Catalina-XFCE-4.16
+RUN mkdir $THEME_DIR
+COPY $THEME_FILE $HOME/
+RUN tar xf $HOME/$THEME_FILE -C $THEME_DIR && rm $HOME/$THEME_FILE
+RUN sed -i "s/Greybird/Os-Catalina-XFCE-4.16/" $THEME_SETTINGS
+
+USER 1000
+
