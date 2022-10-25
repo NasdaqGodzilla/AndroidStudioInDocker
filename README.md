@@ -1,31 +1,63 @@
 # AndroidStudioInDocker
-Android Studio running in Docker based on Ubuntu 18.04 with VNC, SSH, adb tools and xfce desktop. 
+A Docker image running Android Studio and IDEA(2019.3.5) based on Ubuntu 16.04 with VNC, noVNC, SSH, adb tools and xfce desktop, Chromium, Firefox.
 
-![](https://img.shields.io/static/v1?label=DockerHub&message=DaaS&color=green&logo=docker&url=https://hub.docker.com/repository/docker/peacedocker10/niko-daas/)
+Base image from consol/ubuntu-xfce-vnc:latest.
+
+[DockerHub](https://hub.docker.com/repository/docker/peacedocker10/androidstudiodocker)
 
 # Usage
-1. [Pull](https://hub.docker.com/repository/docker/peacedocker10/niko-daas/) from docker hub.
-2. Set up.
-  `docker run -dit --name PeaceDAASMaker -p 8205:5901 -v ~/project/:/metaworld peacedocker10/niko-daas:1.4`
-  - `-p 8205:5901`: Port for VNC. Redirect 8205 of localhost to 5901 of container. The port 5901 is fixed, which is used by VNC.
-  - `-v ~/project/:/metaworld`: Sharing folder of localhost to container.
-  - `--name PeaceDAASMaker`: Name this container.
-3. Enter container by `docker exec -it <your-container-id> /bin/bash`
-4. In container, start vnc server.
-  `vncserver :1  -geometry=1920x1080  -localhost no`
-  - VNC password is 8888 by default.
-5. Connecting to container by using VNC client. Connect to IP:PORT, the ip of your host and the port that you define in step on `-p port:port`.
-  - In this example, PORT is 8205.
+```
+docker run -d --name YourName --shm-size 2G -P -p 8888:5901 -p 8899:6901 -e VNC_RESOLUTION=1920x1080 -e VNC_PW=ppllmmoo --device /dev/kvm --user $(id -u):$(id -g) peacedocker10/androidstudiodocker:1.5'
+```
 
-# Details & Reference
-[AndroidStudio in Docker: 使用文档](https://nasdaqgodzilla.github.io/2022/05/31/AndroidStudio-in-Docker-%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/)
+- Connect by vnc client:
 
-[Docker as As DaaS: 在Docker中运行的AndroidStudio](https://nasdaqgodzilla.github.io/2022/05/31/Docker-as-As-DaaS-%E5%9C%A8Docker%E4%B8%AD%E8%BF%90%E8%A1%8C%E7%9A%84AndroidStudio/)
+```
+HOST:8888
+```
+
+- Connect by Web browser(HTML Client)
+
+```
+http://HOST:8899/vnc.html
+```
+
+OR:
+
+```
+HOST:8899
+```
+
+- Set VNC resolution depth and password
+
+```
+-e VNC_COL_DEPTH=24
+-e VNC_COL_DEPTH=1920x1080
+-e VNC_PW=PASSWD
+```
+
+- Run docker as root
+
+```
+--user 0
+```
+
+# Version
+
+1.0: VNC, AndroidStudio
+
+1.1 & 1.2: Wallpaper & Theme
+
+1.3: Idea ULIMATE 20190305
+
+1.4: ADB bundles
+
+1.5: Layout Master for Idea
 
 # Demo
-![](https://github.com/NasdaqGodzilla/AndroidStudioInDocker/blob/main/DaasDemo1.jpg?raw=true)
-![](https://github.com/NasdaqGodzilla/AndroidStudioInDocker/blob/main/DaasDemo2.jpg?raw=true)
-![](https://github.com/NasdaqGodzilla/AndroidStudioInDocker/blob/main/DaasDemo3.jpg?raw=true)
+![](https://github.com/NasdaqGodzilla/AndroidStudioInDocker/blob/new/desktop.png?raw=true)
+![](https://github.com/NasdaqGodzilla/AndroidStudioInDocker/blob/new/as.png?raw=true)
+![](https://github.com/NasdaqGodzilla/AndroidStudioInDocker/blob/new/layoutmaster.png?raw=true)
 
 # LICENSE
 The MIT License (MIT)
