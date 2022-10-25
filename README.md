@@ -7,7 +7,7 @@ Base image from consol/ubuntu-xfce-vnc:latest.
 
 # Usage
 ```
-docker run -d --name YourName --shm-size 2G -P -p 8888:5901 -p 8899:6901 -e VNC_RESOLUTION=1920x1080 -e VNC_PW=ppllmmoo --device /dev/kvm --user $(id -u):$(id -g) peacedocker10/androidstudiodocker:1.5'
+docker run -d --name YourName --shm-size 2G -P -p 8888:5901 -p 8899:6901 -e VNC_RESOLUTION=1920x1080 -e VNC_PW=ppllmmoo --device /dev/kvm --user $(id -u):$(id -g) peacedocker10/androidstudiodocker:1.5
 ```
 
 - Connect by vnc client:
