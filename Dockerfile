@@ -69,3 +69,11 @@ RUN rm $HOME/$IDEA_FILE
 
 USER 1000
 
+USER 0
+
+RUN add-apt-repository ppa:nilarimogard/webupd8 && apt update \
+    && apt -y install android-tools-adb android-tools-fastboot
+RUN apt autoremove --purge -y && apt clean && apt autoclean && rm -rf /var/lib/apt/lists/*
+
+USER 1000
+
