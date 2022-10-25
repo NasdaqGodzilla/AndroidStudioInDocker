@@ -77,3 +77,9 @@ RUN apt autoremove --purge -y && apt clean && apt autoclean && rm -rf /var/lib/a
 
 USER 1000
 
+# LayoutMaster
+ENV LAYOUTMASTER_PLUGIN=LayoutMaster-1.0.8.zip
+ENV LAYOUTMASTER_SOURCE=LayoutMaster-1.0.0.zip
+COPY $LAYOUTMASTER_PLUGIN $HOME
+COPY $LAYOUTMASTER_SOURCE $HOME
+
