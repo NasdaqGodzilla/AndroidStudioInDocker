@@ -59,3 +59,13 @@ RUN sed -i "s/Greybird/Os-Catalina-XFCE-4.16/" $THEME_SETTINGS
 
 USER 1000
 
+USER 0
+
+# IDEA
+ENV IDEA_FILE=ideaIU-2019.3.5-jbr8.tar.gz
+COPY $IDEA_FILE $HOME/
+RUN tar xzf $HOME/$IDEA_FILE -C /opt/
+RUN rm $HOME/$IDEA_FILE
+
+USER 1000
+
