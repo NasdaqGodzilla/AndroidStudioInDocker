@@ -3,7 +3,7 @@ A Docker image running Android Studio and IDEA(2019.3.5) based on Ubuntu 16.04 w
 
 Base image from consol/ubuntu-xfce-vnc:latest.
 
-[DockerHub](https://hub.docker.com/repository/docker/peacedocker10/androidstudiodocker)
+Pull image from [DockerHub](https://hub.docker.com/r/peacedocker10/androidstudiodocker)
 
 # Usage
 ```
