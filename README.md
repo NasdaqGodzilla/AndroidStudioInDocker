@@ -54,6 +54,8 @@ HOST:8899
 
 1.5: Layout Master for Idea
 
+1.6: Clion & Clang
+
 # Demo
 ![](https://github.com/NasdaqGodzilla/AndroidStudioInDocker/blob/new/desktop.png?raw=true)
 ![](https://github.com/NasdaqGodzilla/AndroidStudioInDocker/blob/new/as.png?raw=true)

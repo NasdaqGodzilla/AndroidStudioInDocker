@@ -83,3 +83,14 @@ ENV LAYOUTMASTER_SOURCE=LayoutMaster-1.0.0.zip
 COPY $LAYOUTMASTER_PLUGIN $HOME
 COPY $LAYOUTMASTER_SOURCE $HOME
 
+# Native code
+USER 1000
+WORKDIR $HOME
+RUN wget https://download.jetbrains.com/cpp/CLion-2022.3.tar.gz
+USER 0
+RUN tar xzf CLion-*.tar.gz -C /opt/ \
+        && rm CLion-*.tar.gz
+RUN apt update && apt install -y cmake gcc g++ clang
+RUN apt autoremove --purge -y && apt clean && apt autoclean && rm -rf /var/lib/apt/lists/*
+USER 1000
+
