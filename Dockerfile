@@ -19,10 +19,19 @@ RUN apt install -y software-properties-common sudo
 # JDK
 RUN apt -o Dpkg::Options::="--force-overwrite" install -y openjdk-9-jdk
 
+# ASfP
+ENV ASFP_FILE=asfp-2023.1.1.19-linux.deb
+COPY $ASFP_FILE $HOME/
+RUN dpkg -i $HOME/$ASFP_FILE
+RUN rm $HOME/$ASFP_FILE
+
 # Android Studio
-RUN add-apt-repository -y ppa:maarten-fonville/android-studio \
-        && apt update \
-        && apt install -y android-studio
+WORKDIR /opt
+RUN wget -O android_studio.tgz \
+        'https://r3---sn-j5o7dn7s.gvt1.com/edgedl/android/studio/ide-zips/2022.3.1.20/android-studio-2022.3.1.20-linux.tar.gz?cms_redirect=yes&mh=5B&mip=58.248.106.93&mm=28&mn=sn-j5o7dn7s&ms=nvh&mt=1696914999&mv=m&mvi=3&pl=21&rmhost=r4---sn-j5o7dn7s.gvt1.com&shardbypass=sd&smhost=r4---sn-j5o7dn7z.gvt1.com' && \
+        tar xvf android_studio.tgz && \
+        rm android_studio.tgz
+WORKDIR $HOME
 
 # Apt clean
 RUN apt autoremove --purge -y && apt clean && apt autoclean && rm -rf /var/lib/apt/lists/*
@@ -84,13 +93,13 @@ COPY $LAYOUTMASTER_PLUGIN $HOME
 COPY $LAYOUTMASTER_SOURCE $HOME
 
 # Native code
-USER 1000
-WORKDIR $HOME
-RUN wget https://download.jetbrains.com/cpp/CLion-2022.3.tar.gz
-USER 0
-RUN tar xzf CLion-*.tar.gz -C /opt/ \
-        && rm CLion-*.tar.gz
-RUN apt update && apt install -y cmake gcc g++ clang
-RUN apt autoremove --purge -y && apt clean && apt autoclean && rm -rf /var/lib/apt/lists/*
-USER 1000
+# USER 1000
+# WORKDIR $HOME
+# RUN wget https://download.jetbrains.com/cpp/CLion-2022.3.tar.gz
+# USER 0
+# RUN tar xzf CLion-*.tar.gz -C /opt/ \
+        # && rm CLion-*.tar.gz
+# RUN apt update && apt install -y cmake gcc g++ clang
+# RUN apt autoremove --purge -y && apt clean && apt autoclean && rm -rf /var/lib/apt/lists/*
+# USER 1000
 
