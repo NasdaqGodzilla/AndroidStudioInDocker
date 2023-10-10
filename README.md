@@ -56,6 +56,8 @@ HOST:8899
 
 1.6: Clion & Clang
 
+1.7：Remove Clion，Add Android Studio for Platorm, Android Studio 2022
+
 # Demo
 ![](https://github.com/NasdaqGodzilla/AndroidStudioInDocker/blob/new/desktop.png?raw=true)
 ![](https://github.com/NasdaqGodzilla/AndroidStudioInDocker/blob/new/as.png?raw=true)
