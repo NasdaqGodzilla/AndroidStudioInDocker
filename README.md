@@ -1,6 +1,8 @@
 # AndroidStudioInDocker
 A Docker image running Android Studio and IDEA(2019.3.5) based on Ubuntu 16.04 with VNC, noVNC, SSH, adb tools and xfce desktop, Chromium, Firefox.
 
+* Since 2.0, now supports RDP with Ubuntu 22.04 Mate only. (Base image from linuxserver/rdesktop:ubuntu-mate)
+
 Base image from consol/ubuntu-xfce-vnc:latest.
 
 Pull image from [DockerHub](https://hub.docker.com/r/peacedocker10/androidstudiodocker)
