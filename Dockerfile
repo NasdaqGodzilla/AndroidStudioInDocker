@@ -47,5 +47,13 @@ COPY $LAYOUTMASTER_SOURCE $HOME
 # RUN apt update && apt install -y cmake gcc g++ clang
 # RUN apt autoremove --purge -y && apt clean && apt autoclean && rm -rf /var/lib/apt/lists/*
 
+# Chinese Support
+RUN sudo locale-gen zh_CN.UTF-8 && sudo dpkg-reconfigure locales && \
+    sudo apt --fix-broken -y install `check-language-support -l zh-hans`
+
+# Spark Store
+COPY spark-store_4.2.13.1_amd64.deb $HOME
+RUN sudo apt --fix-broken -y install $HOME/spark-store_4.2.13.1_amd64.deb
+
 RUN apt autoremove --purge -y && apt clean && apt autoclean && rm -rf /var/lib/apt/lists/*
 
