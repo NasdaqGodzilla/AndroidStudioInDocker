@@ -15,10 +15,10 @@ RUN apt install -y software-properties-common sudo \
 RUN apt -o Dpkg::Options::="--force-overwrite" install -y openjdk-11-jdk
 
 # ASfP
-WORKDIR $HOME
-RUN wget -O $HOME/asfp.deb 'https://dl.google.com/android/asfp/asfp-Narwhal%203%20Feature%20Drop-2025.1.3.7-linux.deb?hl=zh-cn' && \
-        dpkg -i $HOME/asfp.deb && \
-        rm $HOME/asfp.deb
+# WORKDIR $HOME
+# RUN wget -O $HOME/asfp.deb 'https://dl.google.com/android/asfp/asfp-Narwhal%203%20Feature%20Drop-2025.1.3.7-linux.deb?hl=zh-cn' && \
+#        dpkg -i $HOME/asfp.deb && \
+#        rm $HOME/asfp.deb
 
 # Android Studio
 WORKDIR /opt
@@ -49,8 +49,8 @@ WORKDIR $HOME
 # RUN apt autoremove --purge -y && apt clean && apt autoclean && rm -rf /var/lib/apt/lists/*
 
 # Chinese Support
-RUN sudo locale-gen zh_CN.UTF-8 && sudo dpkg-reconfigure locales && \
-    sudo apt --fix-broken -y install `check-language-support -l zh-hans`
+# RUN sudo locale-gen zh_CN.UTF-8 && sudo dpkg-reconfigure locales && \
+#       sudo apt --fix-broken -y install `check-language-support -l zh-hans`
 
 # Spark Store
 # COPY spark-store_4.2.13.1_amd64.deb $HOME
